@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<div class="card"></div>
+
+
+
+<script>
+fetch("https://fakestoreapi.com/products")
+  .then(response => response.json())
+  .then(data => {
+    const container = document.querySelector(".card");
+    data.map(post => {
+      container.innerHTML += `
+        <div class="card">
+         <img src="${post.image}" alt=""width='300px' > 
+          <h3>Name:${post.title}</h3>
+          <br>
+          <span>Price:${post.price}</span>
+          <br>
+          <span>${post.rating.count}</span>
+        </div>
+      `;
+    });
+  })
+
+</script>
+</body>
+</html>
